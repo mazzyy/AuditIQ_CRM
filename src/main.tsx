@@ -5,6 +5,7 @@ import App from './App';
 import Layout from './layouts/Dashboard';
 import ProductsView from './pages/ProductsView';
 import OrdersView from './pages/OrdersView';
+import ManageReports from './pages/Managereports';
 import { OverviewAnalyticsView } from './pages/OverviewAnalyticsView';
 import { BlogView } from './pages/BlogView';
 import { NotFoundView } from './pages/NotFoundView';
@@ -15,6 +16,7 @@ import AgentForm , { agentLoader  }from './pages/AgentForm';
 import SignInView from './pages/SignInView';
 import CustomerForm , { customerLoader  } from './pages/CustomerForm';
 import OrderForm , {orderLoader} from './pages/OrderForm';
+
 
 
 const router = createBrowserRouter([
@@ -32,6 +34,11 @@ const router = createBrowserRouter([
           {
             path: 'orders',
             Component: OrdersView,
+          },
+          {
+            path: 'manage-reports',
+            Component: ManageReports,
+         
           },
           {
             path: 'products',

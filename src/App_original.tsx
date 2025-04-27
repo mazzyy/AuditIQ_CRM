@@ -15,109 +15,34 @@ import * as agentService from "./services/agentService";
 import * as productService from "./services/productService";
 import * as customerService from "./services/customerService";
 import * as orderService from "./services/orderService";
-
+import ManageReports from './pages/Managereports';
 
 const NAVIGATION: Navigation = [
   
   {
+    title: 'Dashboard',
+    icon: <DashboardIcon />,
+  },
+  {
+    segment: 'orders',
+    title: 'Orders',
+    icon: <ShoppingCartIcon />,
+  },
+  {
+    segment: 'products',
+    title: 'Products',
+    icon: <Inventory2Icon />,
+  },
+  {
+    segment: 'customers',
+    title: 'Customers',
+    icon: <ContactsIcon />,
+  },
+    {
     title: 'Manage Reports',
-    segment: 'manage-reports',
-    icon: <ShoppingCartIcon />,
-  },
-    // NEW DROPDOWN TAB HERE 👇
-    {
-      title: 'Setup',
-      icon: <DashboardIcon />,
-      children: [
-        {
-          segment: 'company-dept',
-          title: 'Company/Dept',
-          icon: <NewspaperIcon />  // You can change the icon if you prefer
-        },
-        {
-          segment: 'locations',
-          title: 'Locations',
-          icon: <NewspaperIcon />,  // You can change the icon if you prefer
-        },
-        {
-          segment: 'forms-checklists',
-          title: 'Forms/Checklists',
-          icon: <NewspaperIcon />  // Custom name; use a checklist icon
-        },
-        {
-          segment: 'form-builder',
-          title: 'Form Builder',
-          icon:  <NewspaperIcon />,  // Tool icon for builder
-        },
-        {
-          segment: 'report-styles',
-          title: 'Report Styles',
-          icon:  <NewspaperIcon />  // Document style icon
-        },
-        {
-          segment: 'email-templates',
-          title: 'Email Templates',
-          icon:  <NewspaperIcon />,
-        },
-        {
-          segment: 'blogs',
-          title: 'Blogs',
-          icon: <NewspaperIcon />,
-        },
-        {
-          segment: 'agents',
-          title: 'Agents',
-          icon: <PeopleAltIcon />,
-        },
-        {
-          segment: 'contacts',
-          title: 'Contacts',
-          icon: <ContactsIcon />,
-        },
-      ],
-    },
-    
-  
-    
-    {
-      segment: 'Users',
-      title: 'Users',
-      icon: <ShoppingCartIcon />,
-    },
-    // NEW DROPDOWN TAB HERE 👇
-  {
-    title: 'Advance',  // Main tab
-    icon: <ShoppingCartIcon />,
-    children: [
-      {
-        segment: 'blogs',
-        title: 'Blogs',
-        icon: <NewspaperIcon />,
-      },
-      {
-        segment: 'agents',
-        title: 'Agents',
-        icon: <PeopleAltIcon />,
-      },
-      {
-        segment: 'contacts',
-        title: 'Contacts',
-        icon: <ContactsIcon />,
-      },
-    ],
-  },
    
-  {
-    segment: 'Scheduel',
-    title: 'Scheduel',
     icon: <ShoppingCartIcon />,
   },
-  {
-    segment: 'broadcast',
-    title: 'Broatcast',
-    icon: <ShoppingCartIcon />,
-  },
-   
   
   // {
   //   kind: 'divider',
