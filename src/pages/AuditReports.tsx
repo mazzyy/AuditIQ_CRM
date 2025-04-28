@@ -6,7 +6,6 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import FormControl from '@mui/material/FormControl';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
 import IconButton from '@mui/material/IconButton';
@@ -20,7 +19,6 @@ interface ReportTemplate {
   title: string;
   style: string;
   companies: string[];
-  image: string;
 }
 
 // Define type for company option
@@ -35,29 +33,25 @@ const reportTemplates: ReportTemplate[] = [
     id: 1,
     title: 'Food Safety & Quality',
     style: 'Style 1: Trend Report',
-    companies: ['ztech', 'acme'],
-    image: '/assets/reports/food-safety.png'
+    companies: ['ztech', 'acme']
   },
   {
     id: 2,
     title: 'Construction Quality',
     style: 'Style 1: Trend Report',
-    companies: ['ztech', 'buildco'],
-    image: '/assets/reports/construction-quality.png'
+    companies: ['ztech', 'buildco']
   },
   {
     id: 3,
     title: 'Construction Safety',
     style: 'Style 1: Trend Report',
-    companies: ['ztech', 'buildco'],
-    image: '/assets/reports/construction-safety.png'
+    companies: ['ztech', 'buildco']
   },
   {
     id: 4,
     title: 'Template3',
     style: 'Style 1: Trend Report',
-    companies: ['ztech'],
-    image: '/assets/reports/template3.png'
+    companies: ['ztech']
   }
 ];
 
@@ -67,6 +61,9 @@ const companies: CompanyOption[] = [
   { value: 'acme', label: 'acme' },
   { value: 'buildco', label: 'buildco' }
 ];
+
+// Template image path
+const TEMPLATE_IMAGE_PATH = '/public/assets/icons/template.svg';
 
 export function AuditReports() {
   const [selectedCompany, setSelectedCompany] = useState<string>('ztech');
@@ -89,7 +86,7 @@ export function AuditReports() {
           Templates
         </Link>
         <Link component={RouterLink} href="/report-styles" underline="hover" color="inherit">
-          Reports
+          Report Styles
         </Link>
         <Typography color="text.primary">List</Typography>
       </Breadcrumbs>
@@ -97,7 +94,7 @@ export function AuditReports() {
       {/* Header */}
       <Box display="flex" alignItems="center" mb={3}>
         <Typography variant="h4" flexGrow={1}>
-          Reports
+          Report Styles
         </Typography>
         
         {/* Company selector */}
@@ -135,9 +132,10 @@ export function AuditReports() {
         {filteredReports.map((report) => (
           <Grid item xs={12} sm={6} md={3} key={report.id}>
             <Card sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
+              {/* Use the single template image for all cards */}
               <Box 
                 component="img"
-                src={report.image}
+                src={TEMPLATE_IMAGE_PATH}
                 alt={report.title}
                 sx={{ 
                   width: '100%', 

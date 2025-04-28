@@ -20,7 +20,7 @@ import { CompanyDepts } from './pages/CompanyDepts';
 import Locations from './pages/Locations';
 import {FormsChecklist}   from './pages/FormsChecklist';
 import { AuditReports } from './pages/AuditReports';
-
+import { UsersList } from './pages/UsersList';
 const router = createBrowserRouter([
   {
     Component: App,
@@ -54,7 +54,11 @@ const router = createBrowserRouter([
           {
             path: 'audit-reports',
             Component: AuditReports,
-        
+           
+          },
+          {
+            path: 'users',
+            Component: UsersList,
           },
           {
             path: 'orders',

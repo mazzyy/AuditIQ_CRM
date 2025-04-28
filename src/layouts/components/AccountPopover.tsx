@@ -77,7 +77,7 @@ export function AccountPopover({ data = [], sx, ...other }: AccountPopoverProps)
         </Avatar>
       </IconButton>
 
-      <IconButton
+      {/* <IconButton
         onClick={() => handleNewTab('https://github.com/harryho/react-demo')}
         sx={{
           p: '1px',
@@ -92,7 +92,7 @@ export function AccountPopover({ data = [], sx, ...other }: AccountPopoverProps)
       >
         <GitHubIcon >
         </GitHubIcon>
-      </IconButton>
+      </IconButton> */}
 
       <Popover
         open={!!openPopover}
