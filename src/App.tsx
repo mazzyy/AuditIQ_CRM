@@ -17,76 +17,76 @@ import * as customerService from "./services/customerService";
 import * as orderService from "./services/orderService";
 
 
-const NAVIGATION: Navigation = [
-  
+const NAVIGATION: Navigation = 
+[
   {
     title: 'Manage Reports',
     segment: 'manage-reports',
     icon: <ShoppingCartIcon />,
   },
-    // NEW DROPDOWN TAB HERE 👇
-    {
-      title: 'Setup',
-      icon: <DashboardIcon />,
-      children: [
-        {
-          segment: 'company-dept',
-          title: 'Company/Dept',
-          icon: <NewspaperIcon />  // You can change the icon if you prefer
-        },
-        {
-          segment: 'locations',
-          title: 'Locations',
-          icon: <NewspaperIcon />,  // You can change the icon if you prefer
-        },
-        {
-          segment: 'forms-checklists',
-          title: 'Forms/Checklists',
-          icon: <NewspaperIcon />  // Custom name; use a checklist icon
-        },
-        {
-          segment: 'form-builder',
-          title: 'Form Builder',
-          icon:  <NewspaperIcon />,  // Tool icon for builder
-        },
-        {
-          segment: 'report-styles',
-          title: 'Report Styles',
-          icon:  <NewspaperIcon />  // Document style icon
-        },
-        {
-          segment: 'email-templates',
-          title: 'Email Templates',
-          icon:  <NewspaperIcon />,
-        },
-        {
-          segment: 'blogs',
-          title: 'Blogs',
-          icon: <NewspaperIcon />,
-        },
-        {
-          segment: 'agents',
-          title: 'Agents',
-          icon: <PeopleAltIcon />,
-        },
-        {
-          segment: 'contacts',
-          title: 'Contacts',
-          icon: <ContactsIcon />,
-        },
-      ],
-    },
-    
-  
-    
-    {
-      segment: 'Users',
-      title: 'Users',
-      icon: <ShoppingCartIcon />,
-    },
-    // NEW DROPDOWN TAB HERE 👇
   {
-    title: 'Advance',  // Main tab
+    title: 'Company/Dept',
+    segment: 'company-depts',
+    icon: <NewspaperIcon />,
+  },
+  {
+    title: 'Setup',
+    icon: <DashboardIcon />,
+    children: [
+      {
+        title: 'Company/Dept',
+        segment: 'company-depts',
+        icon: <NewspaperIcon />,
+      },
+      {
+        title: 'Locations',
+        segment: 'locations',
+        icon: <NewspaperIcon />,
+      },
+      {
+        title: 'Forms/Checklists',
+        segment: 'forms-checklists',
+        icon: <NewspaperIcon />,
+      },
+      {
+        title: 'Form Builder',
+        segment: 'form-builder',
+        icon: <NewspaperIcon />,
+      },
+      {
+        title: 'Report Styles',
+        segment: 'report-styles',
+        icon: <NewspaperIcon />,
+      },
+      {
+        title: 'Email Templates',
+        segment: 'email-templates',
+        icon: <NewspaperIcon />,
+      },
+      {
+        title: 'Blogs',
+        segment: 'blogs',
+        icon: <NewspaperIcon />,
+      },
+      {
+        title: 'Agents',
+        segment: 'agents',
+        icon: <PeopleAltIcon />,
+      },
+      {
+        title: 'Contacts',
+        segment: 'contacts',
+        icon: <ContactsIcon />,
+      },
+    ],
+  },
+  {
+    segment: 'Users',
+    title: 'Users',
+    icon: <ShoppingCartIcon />,
+  },
+  {
+    title: 'Advance',
     icon: <ShoppingCartIcon />,
     children: [
       {
@@ -106,7 +106,6 @@ const NAVIGATION: Navigation = [
       },
     ],
   },
-   
   {
     segment: 'Scheduel',
     title: 'Scheduel',
@@ -117,21 +116,13 @@ const NAVIGATION: Navigation = [
     title: 'Broatcast',
     icon: <ShoppingCartIcon />,
   },
-   
-  
-  // {
-  //   kind: 'divider',
-
-  // },
   {
     kind: 'header',
     title: 'Market & Sales',
-    // icon: <StorefrontIcon />,
   },
   {
     kind: 'divider',
   },
-
   {
     segment: 'blogs',
     title: 'Blogs',
@@ -141,7 +132,7 @@ const NAVIGATION: Navigation = [
     segment: 'agents',
     title: 'Agents',
     icon: <PeopleAltIcon />,
-  }
+  },
 ];
 const logo = <img src={logoMidPng} className="logo" alt="" />
 const BRANDING = {

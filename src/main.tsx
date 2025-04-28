@@ -16,8 +16,8 @@ import AgentForm , { agentLoader  }from './pages/AgentForm';
 import SignInView from './pages/SignInView';
 import CustomerForm , { customerLoader  } from './pages/CustomerForm';
 import OrderForm , {orderLoader} from './pages/OrderForm';
-
-
+import { CompanyDepts } from './pages/CompanyDepts';
+import Locations from './pages/Locations';
 
 const router = createBrowserRouter([
   {
@@ -31,14 +31,23 @@ const router = createBrowserRouter([
             path: '',
             Component: OverviewAnalyticsView,
           },
-          {
-            path: 'orders',
-            Component: OrdersView,
-          },
+        
           {
             path: 'manage-reports',
             Component: ManageReports,
          
+          },
+          {
+            path: 'company-depts',
+            Component: CompanyDepts,
+          },
+          {
+            path: 'locations',
+            Component: Locations,
+          },
+          {
+            path: 'orders',
+            Component: OrdersView,
           },
           {
             path: 'products',
