@@ -91,7 +91,7 @@ const NAVIGATION: Navigation = [
         title: "Permissions",
         icon: <NewspaperIcon />,
       },
-      
+
       {
         segment: "agents",
         title: "Roles and Hierarchies",
@@ -103,9 +103,8 @@ const NAVIGATION: Navigation = [
         icon: <ContactsIcon />,
       },
     ],
-    
   },
-  
+
   {
     segment: "Schedule",
     title: "Schedule",
