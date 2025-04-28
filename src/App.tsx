@@ -2,7 +2,6 @@ import * as React from "react";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import Inventory2Icon from "@mui/icons-material/Inventory2";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import ContactsIcon from "@mui/icons-material/Contacts";
 import { Outlet, useNavigate } from "react-router-dom";
