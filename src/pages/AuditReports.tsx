@@ -36,28 +36,28 @@ const reportTemplates: ReportTemplate[] = [
     title: 'Food Safety & Quality',
     style: 'Style 1: Trend Report',
     companies: ['ztech', 'acme'],
-    image: '/assets/reports/food-safety.png'
+    image: '/public/assets/template.svg'
   },
   {
     id: 2,
     title: 'Construction Quality',
     style: 'Style 1: Trend Report',
     companies: ['ztech', 'buildco'],
-    image: '/assets/reports/construction-quality.png'
+    image: 'public/assets/template.svg'
   },
   {
     id: 3,
     title: 'Construction Safety',
     style: 'Style 1: Trend Report',
     companies: ['ztech', 'buildco'],
-    image: '/assets/reports/construction-safety.png'
+    image: 'public/assets/template.svg'
   },
   {
     id: 4,
     title: 'Template3',
     style: 'Style 1: Trend Report',
     companies: ['ztech'],
-    image: '/assets/reports/template3.png'
+    image: 'public/assets/template.svg'
   }
 ];
 

@@ -66,16 +66,8 @@ const NAVIGATION: Navigation =
     ),
   },
   {
-    title: 'Email Templates',
-    segment: 'email-templates',
-    icon: (
-      <Box sx={{ width: 24 }} />  // Empty box for spacing
-    ),
-  },
-  
-  {
-    title: 'Blogs',
-    segment: 'blogs',
+    title: 'UsersList',
+    segment: 'UsersList',
     icon: <NewspaperIcon />,
   },
   {

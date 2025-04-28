@@ -230,19 +230,7 @@ export default function AgentForm() {
                                 
                             </FormControl>
                     </Grid>
-                    
-                    <Grid size={{ xs: 12, md: 6, lg: 3 }}>
-
-                        <FormControl fullWidth>
-                            <CheckboxGenerator
-                                name="isVerified"
-                                label="Is Verified"
-                                value={values.isVerified}
-                                onChange={handleInputChange}
-                                options={checkboxList}
-
-                            /> </FormControl>
-                    </Grid>
+                
                 </Grid>
                 <Stack
                     direction="row"
