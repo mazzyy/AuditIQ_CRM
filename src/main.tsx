@@ -18,6 +18,8 @@ import CustomerForm , { customerLoader  } from './pages/CustomerForm';
 import OrderForm , {orderLoader} from './pages/OrderForm';
 import { CompanyDepts } from './pages/CompanyDepts';
 import Locations from './pages/Locations';
+import {FormsChecklist}   from './pages/FormsChecklist';
+import { AuditReports } from './pages/AuditReports';
 
 const router = createBrowserRouter([
   {
@@ -42,8 +44,17 @@ const router = createBrowserRouter([
             Component: CompanyDepts,
           },
           {
+            path: 'Forms-Checklist',
+            Component: FormsChecklist,
+          },
+          {
             path: 'locations',
             Component: Locations,
+          },
+          {
+            path: 'audit-reports',
+            Component: AuditReports,
+        
           },
           {
             path: 'orders',

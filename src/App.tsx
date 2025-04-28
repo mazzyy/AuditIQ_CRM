@@ -15,6 +15,8 @@ import * as agentService from "./services/agentService";
 import * as productService from "./services/productService";
 import * as customerService from "./services/customerService";
 import * as orderService from "./services/orderService";
+import Box from '@mui/material/Box';
+
 
 
 const NAVIGATION: Navigation = 
@@ -25,60 +27,66 @@ const NAVIGATION: Navigation =
     icon: <ShoppingCartIcon />,
   },
   {
-    title: 'Company/Dept',
-    segment: 'company-depts',
+    title: 'Setup',
     icon: <NewspaperIcon />,
   },
   {
-    title: 'Setup',
-    icon: <DashboardIcon />,
-    children: [
-      {
-        title: 'Company/Dept',
-        segment: 'company-depts',
-        icon: <NewspaperIcon />,
-      },
-      {
-        title: 'Locations',
-        segment: 'locations',
-        icon: <NewspaperIcon />,
-      },
-      {
-        title: 'Forms/Checklists',
-        segment: 'forms-checklists',
-        icon: <NewspaperIcon />,
-      },
-      {
-        title: 'Form Builder',
-        segment: 'form-builder',
-        icon: <NewspaperIcon />,
-      },
-      {
-        title: 'Report Styles',
-        segment: 'report-styles',
-        icon: <NewspaperIcon />,
-      },
-      {
-        title: 'Email Templates',
-        segment: 'email-templates',
-        icon: <NewspaperIcon />,
-      },
-      {
-        title: 'Blogs',
-        segment: 'blogs',
-        icon: <NewspaperIcon />,
-      },
-      {
-        title: 'Agents',
-        segment: 'agents',
-        icon: <PeopleAltIcon />,
-      },
-      {
-        title: 'Contacts',
-        segment: 'contacts',
-        icon: <ContactsIcon />,
-      },
-    ],
+    title: 'Company/Dept',
+    segment: 'company-depts',
+    icon: (
+      <Box sx={{ width: 24 }} />  // Empty box for spacing
+    ),
+  },
+  {
+    title: 'Locations',
+    segment: 'locations',
+    icon: (
+      <Box sx={{ width: 24 }} />  // Empty box for spacing
+    ),
+  },
+  {
+    title: 'Forms/Checklists',
+    segment: 'Forms-Checklist',
+    icon: (
+      <Box sx={{ width: 24 }} />  // Empty box for spacing
+    ),
+  },
+  {
+    title: 'Form Builder',
+    segment: 'form-builder',
+    icon: (
+      <Box sx={{ width: 24 }} />  // Empty box for spacing
+    ),
+  },
+  {
+    title: 'Reports',
+    segment: 'audit-reports',
+    icon: (
+      <Box sx={{ width: 24 }} />  // Empty box for spacing
+    ),
+  },
+  {
+    title: 'Email Templates',
+    segment: 'email-templates',
+    icon: (
+      <Box sx={{ width: 24 }} />  // Empty box for spacing
+    ),
+  },
+  
+  {
+    title: 'Blogs',
+    segment: 'blogs',
+    icon: <NewspaperIcon />,
+  },
+  {
+    title: 'Agents',
+    segment: 'agents',
+    icon: <PeopleAltIcon />,
+  },
+  {
+    title: 'Contacts',
+    segment: 'contacts',
+    icon: <ContactsIcon />,
   },
   {
     segment: 'Users',
