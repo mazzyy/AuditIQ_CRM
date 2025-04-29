@@ -1,11 +1,13 @@
 from fastapi import FastAPI
-from app.database import Base, engine
-from app.routers import user, company, location, report, user_company_location
+from backend.database import Base, engine
+from backend.routers import report, user, company, location, user_company_location
 
+# Create database tables
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+# Include all routers
 app.include_router(user.router)
 app.include_router(company.router)
 app.include_router(location.router)

@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from app import models, schemas
+from backend import models, schemas
 
 def create_report(db: Session, report: schemas.report.ReportCreate):
     db_report = models.report.Report(**report.dict())

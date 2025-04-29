@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, ForeignKey
-from app.database import Base
+from backend.database import Base
 
 class UserCompanyLocation(Base):
     __tablename__ = "user_company_location"

@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from app import models, schemas
+from backend import models, schemas
 
 def create_user_company_location(db: Session, ucl: schemas.user_company_location.UserCompanyLocationCreate):
     db_ucl = models.user_company_location.UserCompanyLocation(**ucl.dict())

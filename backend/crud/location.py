@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from app import models, schemas
+from backend import models, schemas
 
 def create_location(db: Session, location: schemas.location.LocationCreate):
     db_location = models.location.Location(**location.dict())
