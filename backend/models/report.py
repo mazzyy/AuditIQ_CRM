@@ -1,5 +1,7 @@
+# backend/models/report.py
+
 from sqlalchemy import Column, Integer, String, ForeignKey, Enum, Date
-from backend.database import Base
+from database import Base
 import enum
 
 class StatusEnum(str, enum.Enum):

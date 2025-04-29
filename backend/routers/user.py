@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from backend import crud, schemas
-from backend.database import SessionLocal
+from crud import user as user_crud
+from schemas import user as user_schema
+from database import SessionLocal
 
 router = APIRouter(
     prefix="/users",
@@ -15,17 +16,17 @@ def get_db():
     finally:
         db.close()
 
-@router.post("/", response_model=schemas.user.User)
-def create_user(user: schemas.user.UserCreate, db: Session = Depends(get_db)):
-    return crud.user.create_user(db=db, user=user)
+@router.post("/", response_model=user_schema.User)
+def create_user(user: user_schema.UserCreate, db: Session = Depends(get_db)):
+    return user_crud.create_user(db=db, user=user)
 
-@router.get("/", response_model=list[schemas.user.User])
+@router.get("/", response_model=list[user_schema.User])
 def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    return crud.user.get_users(db=db, skip=skip, limit=limit)
+    return user_crud.get_users(db=db, skip=skip, limit=limit)
 
-@router.get("/{user_id}", response_model=schemas.user.User)
+@router.get("/{user_id}", response_model=user_schema.User)
 def read_user(user_id: int, db: Session = Depends(get_db)):
-    db_user = crud.user.get_user(db=db, user_id=user_id)
+    db_user = user_crud.get_user(db=db, user_id=user_id)
     if db_user is None:
         raise HTTPException(status_code=404, detail="User not found")
     return db_user
