@@ -1,16 +1,10 @@
 import { _agents, _roles , _guid} from '../_mock';
 
 export const roleArray = () => [
-  { id: "1", title: 'Sales Leader' },
-  { id: "2", title: 'Hr Manager' },
-  { id: "3", title: 'Sales Agent' },
-  { id: "4", title: 'Sales Operator' },
-  { id: "5", title: 'Sales Manager' },
-  { id: "6", title: 'Project Manager' },
-  { id: "7", title: 'Business Analyst' },
-  { id: "9", title: 'Product Designer' },
-  { id: "10", title: 'Market Manager' },
-  { id: "11", title: 'General Manager' }
+  { id: "1", title: 'Admin' },
+  { id: "2", title: 'Auditor' },
+  { id: "3", title: 'Manager' },
+
 ]
 
 

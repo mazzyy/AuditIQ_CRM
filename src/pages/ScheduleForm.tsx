@@ -45,7 +45,7 @@ function slideTransition(props: SlideProps) {
     return <Slide {...props} direction="up" />;
 }
 
-export default function AgentForm() {
+export default function ScheduleForm() {
     const agent = useLoaderData();
     const router = useRouter();
     const [notice, setNotice] = React.useState<{
@@ -128,11 +128,23 @@ export default function AgentForm() {
     return (
         <Paper sx={{ px: 5, py: 5 }}>
             <Typography variant="h4" sx={{ mb: { xs: 3, md: 5 } }}>
-                Add user
+                Schedule Audit
             </Typography>
             <Form onSubmit={handleSubmit}>
                 <Grid container  rowSpacing={2} columnSpacing={4}>
+                    
                    
+                    <Grid size={{ xs: 12, md: 12, lg: 12 }}>
+
+                        <FormControl fullWidth>
+                            <Input required
+                                label="Audit Name"
+                                name="Audit Name"
+                                value={values.firstName}
+                                onChange={handleInputChange}
+                                error={(errors as TODO).Name}
+                            /> </FormControl>
+                    </Grid>
                     <Grid size={{ xs: 12, md: 6, lg: 6 }}>
 
                         <FormControl fullWidth>
@@ -142,7 +154,7 @@ export default function AgentForm() {
                                 value={values.firstName}
                                 onChange={handleInputChange}
                                 error={(errors as TODO).firstName}
-                            /> </FormControl>
+                        /> </FormControl>
                     </Grid>
                     <Grid size={{ xs: 12, md: 6, lg: 6 }}>
                         <FormControl fullWidth>
@@ -170,16 +182,7 @@ export default function AgentForm() {
                                 error={(errors as TODO).email}
                             /> </FormControl>
                     </Grid>
-                    <Grid size={{ xs: 12, md: 6, lg: 6 }}>
-                        <FormControl fullWidth><Input
-                            variant="outlined"
-                            label="Password"
-                            name="Password"
-                            value={values.password}
-                            onChange={handleInputChange}
-                            error={(errors as TODO).password} 
-                        /> </FormControl>
-                    </Grid>
+                
                    
                    
                     <Grid size={{ xs: 12, md: 6, lg: 3 }}>

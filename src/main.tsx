@@ -21,6 +21,9 @@ import Locations from './pages/Locations';
 import {FormsChecklist}   from './pages/FormsChecklist';
 import { AuditReports } from './pages/AuditReports';
 import { UsersList } from './pages/UsersList';
+import { Schedule } from './pages/Schedule';
+import ScheduleForm from './pages/ScheduleForm';
+import { Broatcast } from './pages/Broatcast';
 const router = createBrowserRouter([
   {
     Component: App,
@@ -60,9 +63,18 @@ const router = createBrowserRouter([
             path: 'UsersList',
             Component: UsersList,
           },
+         
           {
-            path: 'products',
-            Component: ProductsView,
+            path: 'Schedule',
+            Component: Schedule,
+          },
+          {
+            path: 'ScheduleForm',
+            Component: ScheduleForm,
+          },
+          {
+            path: 'Broatcast',
+            Component: Broatcast,
           },
           {
             path: 'customers',

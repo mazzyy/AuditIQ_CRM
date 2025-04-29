@@ -66,42 +66,33 @@ const NAVIGATION: Navigation = [
     segment: "UsersList",
     icon: <NewspaperIcon />,
   },
+  
   // {
-  //   title: "Agents",
-  //   segment: "agents",
-  //   icon: <PeopleAltIcon />,
-  // },
-  // {
-  //   title: "Contacts",
-  //   segment: "contacts",
-  //   icon: <ContactsIcon />,
-  // },
-  // {
-  //   segment: "Users",
-  //   title: "Users",
+  //   title: "Advance",
   //   icon: <ShoppingCartIcon />,
+  //   children: [
+  //     {
+  //       segment: "blogs",
+  //       title: "Permissions",
+  //       icon: <NewspaperIcon />,
+  //     },
+
+  //     {
+  //       segment: "agents",
+  //       title: "Roles and Hierarchies",
+  //       icon: <PeopleAltIcon />,
+  //     },
+  //     {
+  //       segment: "Action Plan Settings",
+  //       title: "Contacts",
+  //       icon: <ContactsIcon />,
+  //     },
+  //   ],
   // },
   {
-    title: "Advance",
-    icon: <ShoppingCartIcon />,
-    children: [
-      {
-        segment: "blogs",
-        title: "Permissions",
-        icon: <NewspaperIcon />,
-      },
-
-      {
-        segment: "agents",
-        title: "Roles and Hierarchies",
-        icon: <PeopleAltIcon />,
-      },
-      {
-        segment: "Action Plan Settings",
-        title: "Contacts",
-        icon: <ContactsIcon />,
-      },
-    ],
+    segment: "Gallary",
+    title: "Gallary",
+    icon: <ScheduleIcon />,
   },
 
   {
@@ -110,7 +101,7 @@ const NAVIGATION: Navigation = [
     icon: <ScheduleIcon />,
   },
   {
-    segment: "broadcast",
+    segment: "Broatcast",
     title: "Broatcast",
     icon: <CampaignIcon />,
   },
