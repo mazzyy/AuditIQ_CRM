@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect} from "react";
 import { useForm } from "../components/form/use-form";
 import Input from "../components/controls/Input";
 import RadioGroupGenerator from "../components/controls/RadioGroup";
@@ -14,6 +15,7 @@ import { useRouter } from "../routes/hooks/use-router";
 import Slide, { SlideProps } from '@mui/material/Slide';
 import Fade from '@mui/material/Fade';
 import { TransitionProps } from '@mui/material/transitions';
+import axios from 'axios';
 
 const initialFieldValues: Agent = {
     id: "",
@@ -31,21 +33,13 @@ const initialFieldValues: Agent = {
     isVerified: false
 };
 
-const radioList = [
-    { id: "active", title: "Active" },
-    { id: "locked", title: "Locked" },
-];
-
-const checkboxList = [
-    { id: "1", title: "yes" },
-    { id: "2", title: "no" }
-];
 
 function slideTransition(props: SlideProps) {
     return <Slide {...props} direction="up" />;
 }
 
 export default function AgentForm() {
+
     const agent = useLoaderData();
     const router = useRouter();
     const [notice, setNotice] = React.useState<{
@@ -69,6 +63,33 @@ export default function AgentForm() {
         currentField
     } = useForm(initialFieldValues, agent);
 
+    function createUser() {
+        console.log("Create user")
+        console.log("Form values being submitted:", {
+           
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            password: values.Password,
+            
+        });
+        axios.post('http://localhost:8000/create-user', {
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            password: values.Password,
+          })
+          .then(response => {
+            console.log("User created successfully:", response.data);
+            // Optionally clear form or show success message here
+          })
+          .catch(error => {
+            console.error("Error creating user:", error.response?.data || error.message);
+            // Optionally show error message to user
+          });
+        
+    };
+    
     const navigate = useNavigate();
 
 
@@ -219,10 +240,10 @@ export default function AgentForm() {
                     }}
                 >
                     {agent ? <ButtonGenerator text="Update" onClick={handleUpdate} />
-                        : <ButtonGenerator text="Submit" type="submit" />
+                        : <ButtonGenerator text="Submit" type="submit"  onClick={createUser} /> 
                     }
                     {agent ? <ButtonGenerator text="Back" color="default" onClick={goBack} />
-                        : <ButtonGenerator text="Reset" color="default" onClick={resetForm} />}
+                        : <ButtonGenerator text="Reset" color="default"  />}
                 </Stack>
             </Form >
             <Snackbar

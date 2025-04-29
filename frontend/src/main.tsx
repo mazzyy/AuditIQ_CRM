@@ -25,6 +25,7 @@ import { Schedule } from './pages/Schedule';
 import ScheduleForm from './pages/ScheduleForm';
 import { Broatcast } from './pages/Broatcast';
 import broatcastForm from './pages/BroatcastForm';
+import { Gallary } from './pages/Gallary';
 const router = createBrowserRouter([
   {
     Component: App,
@@ -82,8 +83,8 @@ const router = createBrowserRouter([
             Component: broatcastForm,
           },
           {
-            path: 'blogs',
-            Component: BlogView,
+            path: 'Gallary',
+            Component: Gallary,
           },
           {
             path: 'agents',
