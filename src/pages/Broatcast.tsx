@@ -79,15 +79,15 @@ export function Broatcast() {
     <>
       <Box display="flex" alignItems="center" mb={5}>
         <Typography variant="h4" flexGrow={1}>
-        Schedule Audit
+        Broatcast
         </Typography>
         <Button
           variant="contained"
           color="primary"
           startIcon={<Iconify icon="mingcute:add-line" />}
-          component={RouterLink} href="/ScheduleForm"
+          component={RouterLink} href="/broatcastForm"
         >
-          Schedule New Audit
+          New Broatcast 
         </Button>
       </Box>
 
@@ -118,11 +118,11 @@ export function Broatcast() {
                   )
                 }
                 headLabel={[
-                  { id: 'Audit name', label: 'Audit name' },
-                  { id: 'name', label: 'User' },
-                  { id: 'email', label: 'Email' },
-                  { id: 'role', label: 'Role' },
-                  { id: 'date', label: 'date' },
+                  { id: 'Broatcast', label: 'Broatcast' },
+                  { id: 'Purpose', label: 'Purpose' },
+                  { id: 'Date', label: 'Date' },
+                  { id: 'Created at', label: 'Created at' },
+                
                   { id: 'Edit', label: 'Edit', align: 'center' },
                 
                 ]}

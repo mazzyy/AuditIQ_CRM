@@ -24,6 +24,7 @@ import { UsersList } from './pages/UsersList';
 import { Schedule } from './pages/Schedule';
 import ScheduleForm from './pages/ScheduleForm';
 import { Broatcast } from './pages/Broatcast';
+import broatcastForm from './pages/BroatcastForm';
 const router = createBrowserRouter([
   {
     Component: App,
@@ -77,8 +78,8 @@ const router = createBrowserRouter([
             Component: Broatcast,
           },
           {
-            path: 'customers',
-            Component: CustomerView,
+            path: 'broatcastForm',
+            Component: broatcastForm,
           },
           {
             path: 'blogs',
