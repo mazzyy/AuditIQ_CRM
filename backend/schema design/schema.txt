@@ -1,0 +1,40 @@
+the schema can also be found on https://dbdiagram.io/d/680f9e761ca52373f5adea4a
+
+Table Users {
+  id int [pk, increment]                 
+  name varchar(100)                     
+  email varchar(255)                    
+  role enum('admin', 'auditor', 'manager') 
+}
+
+Table Companies {
+  id int [pk, increment]
+  name varchar(150)                     
+}
+
+Table Locations {
+  id int [pk, increment]
+  company_id int [ref: > Companies.id]
+  location_name varchar(150)           
+  address text                         
+  tags varchar(200)                   
+}
+
+Table Reports {
+  id int [pk, increment]
+  company_id int [ref: > Companies.id]
+  user_id int [ref: > Users.id]
+  location_id int [ref: > Locations.id]
+  report_name varchar(200)            
+  report_date date
+  submitted_by varchar(100)           
+  status enum('draft', 'submitted', 'approved', 'rejected') 
+  score int                           
+}
+
+Table UserCompanyLocation {
+  id int [pk, increment]
+  user_id int [ref: > Users.id]
+  company_id int [ref: > Companies.id]
+  location_id int [ref: > Locations.id]
+}
