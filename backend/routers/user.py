@@ -5,10 +5,7 @@ from schemas import user as user_schema
 from database import SessionLocal
 
 router = APIRouter(
-<<<<<<< HEAD
-=======
-    
->>>>>>> d6f80992a61e5ce807045c22a75af164bf76c897
+    prefix="/users",
     tags=["Users"],
 )
 
