@@ -5,7 +5,7 @@ import App from './App';
 import Layout from './layouts/Dashboard';
 import ProductsView from './pages/ProductsView';
 import OrdersView from './pages/OrdersView';
-import ManageReports from './pages/Managereports';
+import ManageReports from "./pages/ManageReports";
 import { OverviewAnalyticsView } from './pages/OverviewAnalyticsView';
 import { BlogView } from './pages/BlogView';
 import { NotFoundView } from './pages/NotFoundView';
@@ -25,7 +25,6 @@ import { Schedule } from './pages/Schedule';
 import ScheduleForm from './pages/ScheduleForm';
 import { Broatcast } from './pages/Broatcast';
 import broatcastForm from './pages/BroatcastForm';
-import { Gallary } from './pages/Gallary';
 const router = createBrowserRouter([
   {
     Component: App,
@@ -83,8 +82,8 @@ const router = createBrowserRouter([
             Component: broatcastForm,
           },
           {
-            path: 'Gallary',
-            Component: Gallary,
+            path: 'blogs',
+            Component: BlogView,
           },
           {
             path: 'agents',
