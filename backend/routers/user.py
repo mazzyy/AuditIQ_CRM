@@ -5,7 +5,7 @@ from schemas import user as user_schema
 from database import SessionLocal
 
 router = APIRouter(
-    
+    prefix="/users",
     tags=["Users"],
 )
 
@@ -18,10 +18,9 @@ def get_db():
 
 @router.post("/create-user", response_model=user_schema.User)
 def create_user(user: user_schema.UserCreate, db: Session = Depends(get_db)):
-    print("create user")
     return user_crud.create_user(db=db, user=user)
 
-@router.get("/users", response_model=list[user_schema.User])
+@router.get("/", response_model=list[user_schema.User])
 def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return user_crud.get_users(db=db, skip=skip, limit=limit)
 
