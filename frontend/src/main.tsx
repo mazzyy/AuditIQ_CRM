@@ -10,7 +10,7 @@ import { OverviewAnalyticsView } from './pages/OverviewAnalyticsView';
 import { BlogView } from './pages/BlogView';
 import { NotFoundView } from './pages/NotFoundView';
 import { HelmetProvider } from 'react-helmet-async';
-import { AgentView } from './pages/AgentView';
+
 import { CustomerView } from './pages/CustomerView';
 import AgentForm , { agentLoader  }from './pages/AgentForm';
 import SignInView from './pages/SignInView';
@@ -26,6 +26,10 @@ import ScheduleForm from './pages/ScheduleForm';
 import { Broatcast } from './pages/Broatcast';
 import broatcastForm from './pages/BroatcastForm';
 import { Gallary } from './pages/Gallary';
+import { HelpCenter } from './pages/HelpCenter';
+import {Faq} from './pages/Faq';
+import { ContactUs } from './pages/ContactUs';
+import { ContactTeam } from './pages/ContactTeam';
 const router = createBrowserRouter([
   {
     Component: App,
@@ -91,12 +95,20 @@ const router = createBrowserRouter([
             Component: Gallary,
           },
           {
-            path: 'agents',
-            Component: AgentView,
+            path: 'HelpCenter',
+            Component: HelpCenter,
           },
           {
-            path: 'agent-form',
-            Component: AgentForm,
+            path: 'Faq',
+            Component: Faq,
+          },
+          {
+            path: 'ContactUs',
+            Component: ContactUs,
+          },
+          {
+            path: 'ContactTeam',
+            Component: ContactTeam,
           },
           {
             path: 'edit-agent/:id',
