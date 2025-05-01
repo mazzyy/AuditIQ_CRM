@@ -5,39 +5,43 @@ import type { Session } from '@toolpad/core/AppProvider';
 import { useNavigate } from 'react-router-dom';
 import { useSession } from '../SessionContext';
 
-const fakeAsyncGetSession = async (formData: any): Promise<Session> => {
+const fakeAsyncSignUp = async (formData: any): Promise<Session> => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      console.log(JSON.stringify(formData));
-      if (formData.get('password') !== '') {
+      console.log('Sign up form data:', JSON.stringify(formData));
+      const email = formData.get('email');
+      const password = formData.get('password');
+
+      if (email && password) {
         resolve({
           user: {
-            name: 'Harry Ho',
-            email: formData.get('email') || '',
-            image: 'https://avatars.githubusercontent.com/u/19550456',
+            name: formData.get('name') || 'New User',
+            email: email,
+            image: 'https://avatars.githubusercontent.com/u/12345678',
           },
         });
+      } else {
+        reject(new Error('Email and password are required.'));
       }
-      reject(new Error('Incorrect credentials.'));
     }, 1000);
   });
 };
 
-const fakeGoogleSignIn = async (): Promise<Session> => {
+const fakeGoogleSignUp = async (): Promise<Session> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
         user: {
-          name: 'Google User',
-          email: 'googleuser@example.com',
-          image: 'https://avatars.githubusercontent.com/u/00000000',
+          name: 'Google New User',
+          email: 'newgoogleuser@example.com',
+          image: 'https://avatars.githubusercontent.com/u/00000001',
         },
       });
     }, 1000);
   });
 };
 
-export default function SignInView() {
+export default function SignUpView() {
   const { setSession } = useSession();
   const navigate = useNavigate();
 
@@ -52,9 +56,9 @@ export default function SignInView() {
           let session: Session | null = null;
 
           if (provider.id === 'credentials') {
-            session = await fakeAsyncGetSession(formData);
+            session = await fakeAsyncSignUp(formData);
           } else if (provider.id === 'google') {
-            session = await fakeGoogleSignIn();
+            session = await fakeGoogleSignUp();
           }
 
           if (session) {
@@ -69,6 +73,8 @@ export default function SignInView() {
         }
         return {};
       }}
+      title="Sign Up"
+      subtitle="Create a new account using your email or Google"
     />
   );
 }
