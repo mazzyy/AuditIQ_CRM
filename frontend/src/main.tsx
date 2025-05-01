@@ -30,6 +30,7 @@ import { HelpCenter } from './pages/HelpCenter';
 import {Faq} from './pages/Faq';
 import { ContactUs } from './pages/ContactUs';
 import { ContactTeam } from './pages/ContactTeam';
+import PaymentPage from './pages/PaymentPage';
 const router = createBrowserRouter([
   {
     Component: App,
@@ -109,6 +110,10 @@ const router = createBrowserRouter([
           {
             path: 'ContactTeam',
             Component: ContactTeam,
+          },
+          {
+            path: 'PaymentPage',
+            Component: PaymentPage,
           },
           {
             path: 'edit-agent/:id',

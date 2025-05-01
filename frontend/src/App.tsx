@@ -130,7 +130,7 @@ const NAVIGATION: Navigation = [
     kind: "divider",
   },
   {
-    segment: "Payments & Plans",
+    segment: "PaymentPage",
     title: "Payments & Plans",
     icon: <NewspaperIcon />,
   },
