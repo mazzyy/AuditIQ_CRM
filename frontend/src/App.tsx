@@ -135,7 +135,7 @@ const NAVIGATION: Navigation = [
     icon: <NewspaperIcon />,
   },
   {
-    segment: "Help Center",
+    segment: "HelpCenter",
     title: "Help Center",
     icon: <PeopleAltIcon />,
   },
