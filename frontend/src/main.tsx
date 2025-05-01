@@ -33,6 +33,8 @@ import { ContactTeam } from './pages/ContactTeam';
 import PaymentPage from './pages/PaymentPage';
 import { ComingSoon } from './pages/ComingSoon';
 import Kpi from './pages/Kpi';
+
+import SignUpView from "./pages/SignUpView"
 const router = createBrowserRouter([
   {
     Component: App,
@@ -159,9 +161,14 @@ const router = createBrowserRouter([
         ]
       },
       {
+        path: '/sign-up',
+        Component: SignUpView
+      },
+      {
         path: '/sign-in',
         Component: SignInView
       },
+    
       {
         path: '*',
         Component: NotFoundView
