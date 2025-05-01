@@ -5,6 +5,11 @@ from datetime import datetime
 from passlib.hash import bcrypt
 
 def create_user(db: Session, user: user_schema.UserCreate):
+    # Check if email exists
+    existing_user = db.query(user_model.User).filter(user_model.User.email == user.email).first()
+    if existing_user:
+        raise ValueError("Email already registered.")
+    
     hashed_password = bcrypt.hash(user.password)
     db_user = user_model.User(
         first_name=user.first_name,

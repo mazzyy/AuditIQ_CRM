@@ -1,8 +1,10 @@
 from pydantic import BaseModel, EmailStr
 from enum import Enum
 from datetime import datetime
+from typing import Optional
 
 class RoleEnum(str, Enum):
+    superuser = "superuser"
     admin = "admin"
     auditor = "auditor"
     manager = "manager"
@@ -12,7 +14,7 @@ class UserBase(BaseModel):
     first_name: str
     last_name: str
     email: EmailStr
-    phone_number: str
+    phone_number: Optional[str] = None  
     theme: bool = False
     role: RoleEnum
 

@@ -3,6 +3,8 @@ from sqlalchemy.orm import Session
 from crud import users as user_crud
 from schemas import users as user_schema
 from database import get_db
+from dependencies.permissions import can_update
+from dependencies.auth import get_current_user  # ✅ import your auth logic
 
 router = APIRouter(
     prefix="/users",
@@ -25,10 +27,21 @@ def get_user(user_id: int, db: Session = Depends(get_db)):
     return user
 
 @router.put("/{user_id}", response_model=user_schema.User)
-def update_user(user_id: int, user: user_schema.UserCreate, db: Session = Depends(get_db)):
-    updated_user = user_crud.update_user(db, user_id, user)
-    if not updated_user:
+def update_user(
+    user_id: int,
+    user: user_schema.UserCreate,
+    db: Session = Depends(get_db),
+    current_user: user_schema.User = Depends(get_current_user)
+):
+    target_user = user_crud.get_user(db, user_id)
+    if not target_user:
         raise HTTPException(status_code=404, detail="User not found")
+
+    #  Permission check
+    if not can_update(current_user.role, target_user.role):
+        raise HTTPException(status_code=403, detail="Permission denied")
+
+    updated_user = user_crud.update_user(db, user_id, user)
     return updated_user
 
 @router.delete("/{user_id}")
