@@ -14,9 +14,9 @@ class ReportBase(BaseModel):
     location_id: int
     report_name: str
     report_date: date
-    submitted_by: str
     status: StatusEnum
-    score: int
+    report_score: int
+    file_url: str
 
 class ReportCreate(ReportBase):
     pass
