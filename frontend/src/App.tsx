@@ -119,7 +119,7 @@ const NAVIGATION: Navigation = [
     icon: <AnalyticsIcon />,
   },
   {
-    segment: "KPI",
+    segment: "kpi",
     title: "KPI and Graphs",
     icon: <LeaderboardIcon />,
   },

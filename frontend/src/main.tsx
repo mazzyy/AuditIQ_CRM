@@ -32,6 +32,7 @@ import { ContactUs } from './pages/ContactUs';
 import { ContactTeam } from './pages/ContactTeam';
 import PaymentPage from './pages/PaymentPage';
 import { ComingSoon } from './pages/ComingSoon';
+import Kpi from './pages/Kpi';
 const router = createBrowserRouter([
   {
     Component: App,
@@ -120,6 +121,11 @@ const router = createBrowserRouter([
             path: 'ComingSoon',
             Component: ComingSoon,
           },
+          {
+            path: 'Kpi',
+            Component: Kpi,
+          },
+        
           {
             path: 'edit-agent/:id',
             Component: AgentForm,
