@@ -19,10 +19,11 @@
 
 from fastapi import FastAPI
 from database import Base, engine
-from routers import report
 from routers import (
     users,
     company_store,
+    locations,
+    reports,
     report_templates,
     media_files,
     user_company,
@@ -43,8 +44,11 @@ def root():
   "service": "AuditIQ API"
 }
 
+# ✅ Include all routers
 app.include_router(users.router)
 app.include_router(company_store.router)
+app.include_router(locations.router)
+app.include_router(reports.router)
 app.include_router(report_templates.router)
 app.include_router(media_files.router)
 app.include_router(user_company.router)
