@@ -1,40 +1,102 @@
 the schema can also be found on https://dbdiagram.io/d/680f9e761ca52373f5adea4a
-
 Table Users {
-  id int [pk, increment]                 
-  name varchar(100)                     
-  email varchar(255)                    
-  role enum('admin', 'auditor', 'manager') 
+  id int [pk, increment]
+  first_name varchar(100)
+  last_name varchar(100)
+  email varchar(255)
+  password_hash varchar(255) // Store bcrypt (or other hashed) password
+  phone_number varchar(20)
+  theme bool
+  role enum('admin', 'auditor', 'manager', 'trial')
+  created_at datetime
+  updated_at datetime
 }
 
-Table Companies {
+Table Company_Store {
   id int [pk, increment]
-  name varchar(150)                     
+  name varchar(150)
 }
 
 Table Locations {
   id int [pk, increment]
-  company_id int [ref: > Companies.id]
-  location_name varchar(150)           
-  address text                         
-  tags varchar(200)                   
+  company_id int [ref: > Company_Store.id]
+  location_name varchar(150)
+  address text
+  tags varchar(200)
 }
 
 Table Reports {
   id int [pk, increment]
-  company_id int [ref: > Companies.id]
+  company_id int [ref: > Company_Store.id]
   user_id int [ref: > Users.id]
   location_id int [ref: > Locations.id]
-  report_name varchar(200)            
+  report_name varchar(200)
   report_date date
-  submitted_by varchar(100)           
-  status enum('draft', 'submitted', 'approved', 'rejected') 
-  score int                           
+  status enum('draft', 'submitted', 'approved', 'rejected')
+  report_score int
+  file_url varchar(500)
 }
 
-Table UserCompanyLocation {
+Table ReportTemplates {
+  id int [pk, increment]
+  name varchar(200)
+  description text
+  content json // Store the template structure or fields as JSON
+  created_at datetime
+  updated_at datetime
+}
+
+Table MediaFiles {
+  id int [pk, increment]
+  user_id int [ref: > Users.id]  // uploader's ID
+  company_id int [ref: > Company_Store.id]  // optional: scope to a company
+  name varchar(200)
+  file_url varchar(500)
+  created_at datetime
+}
+
+
+Table UserCompany {
   id int [pk, increment]
   user_id int [ref: > Users.id]
-  company_id int [ref: > Companies.id]
+  company_id int [ref: > Company_Store.id]
+}
+
+Table UserLocation {
+  id int [pk, increment]
+  user_id int [ref: > Users.id]
   location_id int [ref: > Locations.id]
+}
+
+Table Payments {
+  id int [pk, increment]
+  user_id int [ref: > Users.id]
+  company_id int [ref: > Company_Store.id]
+  subscription_id int [ref: > Subscriptions.id, null]  
+  payment_provider varchar(100)
+  provider_payment_id varchar(255) 
+  amount decimal(10, 2)
+  currency varchar(10)
+  status enum('pending', 'success', 'failed', 'refunded')
+  payment_date datetime
+  invoice_url varchar(255)
+  description text 
+  created_at datetime
+  updated_at datetime
+}
+
+Table Subscriptions {
+  id int [pk, increment]
+  user_id int [ref: > Users.id]
+  company_id int [ref: > Company_Store.id]
+  plan_name varchar(100)
+  payment_provider varchar(100) 
+  provider_subscription_id varchar(255) 
+  status enum('trialing', 'active', 'past_due', 'paused', 'canceled', 'expired')
+  trial_end datetime 
+  current_period_start datetime
+  current_period_end datetime
+  cancel_at_period_end bool 
+  created_at datetime
+  updated_at datetime
 }

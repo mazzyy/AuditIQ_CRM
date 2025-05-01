@@ -1,10 +1,8 @@
-# backend/models/company.py
-
 from sqlalchemy import Column, Integer, String
 from database import Base
 
-class Company(Base):
-    __tablename__ = "companies"
+class CompanyStore(Base):
+    __tablename__ = "company_store"
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(150))

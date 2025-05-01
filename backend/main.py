@@ -20,7 +20,16 @@
 from fastapi import FastAPI
 from database import Base, engine
 from routers import report
-from routers import user, company, location, user_company_location, report
+from routers import (
+    users,
+    company_store,
+    report_templates,
+    media_files,
+    user_company,
+    user_location,
+    payments,
+    subscriptions
+)
 
 Base.metadata.create_all(bind=engine)
 
@@ -34,13 +43,14 @@ def root():
   "service": "AuditIQ API"
 }
 
-
-app.include_router(report.router)
-app.include_router(user.router)
-app.include_router(company.router)
-app.include_router(location.router)
-app.include_router(user_company_location.router)
-
+app.include_router(users.router)
+app.include_router(company_store.router)
+app.include_router(report_templates.router)
+app.include_router(media_files.router)
+app.include_router(user_company.router)
+app.include_router(user_location.router)
+app.include_router(payments.router)
+app.include_router(subscriptions.router)
 
 
 # ⬇️ ADD these 3 imports to load all tables properly
