@@ -31,6 +31,7 @@ import {Faq} from './pages/Faq';
 import { ContactUs } from './pages/ContactUs';
 import { ContactTeam } from './pages/ContactTeam';
 import PaymentPage from './pages/PaymentPage';
+import { ComingSoon } from './pages/ComingSoon';
 const router = createBrowserRouter([
   {
     Component: App,
@@ -114,6 +115,10 @@ const router = createBrowserRouter([
           {
             path: 'PaymentPage',
             Component: PaymentPage,
+          },
+          {
+            path: 'ComingSoon',
+            Component: ComingSoon,
           },
           {
             path: 'edit-agent/:id',

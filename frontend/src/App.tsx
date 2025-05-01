@@ -113,7 +113,8 @@ const NAVIGATION: Navigation = [
     kind: "divider",
   },
   {
-    segment: "Advanced Analytics",
+    segment: "ComingSoon",
+    
     title: "Advanced Analytics",
     icon: <AnalyticsIcon />,
   },
