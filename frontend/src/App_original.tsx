@@ -15,7 +15,7 @@ import * as agentService from "./services/agentService";
 import * as productService from "./services/productService";
 import * as customerService from "./services/customerService";
 import * as orderService from "./services/orderService";
-import ManageReports from './pages/Managereports';
+import ManageReports from './pages/ManageReports';
 
 const NAVIGATION: Navigation = [
   
