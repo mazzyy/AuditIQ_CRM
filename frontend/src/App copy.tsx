@@ -51,7 +51,7 @@ const NAVIGATION: Navigation = [
   },
   {
     title: "Form Builder",
-    segment: "form-builder",
+    segment: "CommingSoon",
     // Empty box for spacing
     icon: <Box sx={{ width: 24 }} />,
   },
@@ -66,7 +66,7 @@ const NAVIGATION: Navigation = [
     segment: "UsersList",
     icon: <NewspaperIcon />,
   },
-  
+
   // {
   //   title: "Advance",
   //   icon: <ShoppingCartIcon />,
@@ -114,7 +114,7 @@ const NAVIGATION: Navigation = [
   },
   {
     segment: "ComingSoon",
-    
+
     title: "Advanced Analytics",
     icon: <AnalyticsIcon />,
   },
