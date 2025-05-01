@@ -5,7 +5,10 @@
 /.pnp
 .pnp.js
 yarn.lock
+<<<<<<< HEAD
 
+=======
+>>>>>>> feat/adv_settings
 venv
 # testing
 /coverage

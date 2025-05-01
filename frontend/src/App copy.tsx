@@ -51,7 +51,7 @@ const NAVIGATION: Navigation = [
   },
   {
     title: "Form Builder",
-    segment: "ComingSoon",
+    segment: "CommingSoon",
     // Empty box for spacing
     icon: <Box sx={{ width: 24 }} />,
   },

@@ -30,6 +30,11 @@ import { HelpCenter } from './pages/HelpCenter';
 import {Faq} from './pages/Faq';
 import { ContactUs } from './pages/ContactUs';
 import { ContactTeam } from './pages/ContactTeam';
+import PaymentPage from './pages/PaymentPage';
+import { ComingSoon } from './pages/ComingSoon';
+import Kpi from './pages/Kpi';
+
+import SignUpView from "./pages/SignUpView"
 const router = createBrowserRouter([
   {
     Component: App,
@@ -111,6 +116,19 @@ const router = createBrowserRouter([
             Component: ContactTeam,
           },
           {
+            path: 'PaymentPage',
+            Component: PaymentPage,
+          },
+          {
+            path: 'ComingSoon',
+            Component: ComingSoon,
+          },
+          {
+            path: 'Kpi',
+            Component: Kpi,
+          },
+        
+          {
             path: 'edit-agent/:id',
             Component: AgentForm,
             loader: agentLoader
@@ -143,9 +161,14 @@ const router = createBrowserRouter([
         ]
       },
       {
+        path: '/sign-up',
+        Component: SignUpView
+      },
+      {
         path: '/sign-in',
         Component: SignInView
       },
+    
       {
         path: '*',
         Component: NotFoundView

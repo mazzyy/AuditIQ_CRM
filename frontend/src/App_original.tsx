@@ -6,7 +6,7 @@ import Inventory2Icon from '@mui/icons-material/Inventory2';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import ContactsIcon from '@mui/icons-material/Contacts';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { AppProvider } from '@toolpad/core/react-router-dom';
+import { AppProvider } from "@toolpad/core/react-router-dom";
 import { createTheme } from '@mui/material/styles';
 import logoMidPng from './assets/it-logo-mid.png';
 import { Session, type Navigation } from '@toolpad/core/AppProvider';
@@ -15,7 +15,11 @@ import * as agentService from "./services/agentService";
 import * as productService from "./services/productService";
 import * as customerService from "./services/customerService";
 import * as orderService from "./services/orderService";
+<<<<<<< HEAD
 import ManageReports from './pages/ManageReports';
+=======
+import ManageReports from "./pages/ManageReports"
+>>>>>>> feat/adv_settings
 
 const NAVIGATION: Navigation = [
   

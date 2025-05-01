@@ -4,6 +4,10 @@
 /node_modules
 /.pnp
 .pnp.js
+<<<<<<< HEAD
+=======
+package-lock.json
+>>>>>>> feat/adv_settings
 yarn.lock
 
 # testing
