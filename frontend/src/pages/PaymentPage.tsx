@@ -27,6 +27,7 @@ import {
   Business as BuildingIcon,
   AccountBalanceWallet as WalletIcon,
   Check as CheckIcon,
+  Close as CloseIcon,
   ChevronRight as ChevronRightIcon,
   ChevronLeft as ChevronLeftIcon,
   Build as WrenchIcon,
@@ -42,7 +43,8 @@ interface PlanDetails {
   title: string;
   subtitle: string;
   price: number;
-  features: string[];
+  includedFeatures: string[];
+  excludedFeatures: string[];
   description: string;
   icon: React.ReactNode;
 }
@@ -89,13 +91,14 @@ export default function PaymentPage() {
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethodType>('creditCard');
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
-  
+
   const plans: PlansType = {
     action: {
       title: 'Action Seat',
       subtitle: 'Operations Team',
       price: 99,
-      features: ['AUDITIQ', 'CONNECTIQ', 'MARGINIQ', 'SCHEDULEIQ', 'PROJECTIQ', 'INSIGHTIQ', 'PROFITIQ', 'LOCATIONIQ'],
+      includedFeatures: ['AUDITIQ', 'CONNECTIQ', 'MARGINIQ', 'SCHEDULEIQ'],
+      excludedFeatures: ['PROJECTIQ', 'INSIGHTIQ', 'PROFITIQ', 'LOCATIONIQ'],
       description: 'Emphasizes on-the-ground action for AuditIQ and ConnetiQ tasks.',
       icon: <WrenchIcon />
     },
@@ -103,7 +106,8 @@ export default function PaymentPage() {
       title: 'Control Seat',
       subtitle: 'Director Level',
       price: 159,
-      features: ['AUDITIQ', 'CONNECTIQ', 'MARGINIQ', 'SCHEDULEIQ', 'PROJECTIQ', 'INSIGHTIQ', 'PROFITIQ', 'LOCATIONIQ'],
+      includedFeatures: ['AUDITIQ', 'CONNECTIQ', 'MARGINIQ', 'SCHEDULEIQ', 'PROJECTIQ', 'INSIGHTIQ'],
+      excludedFeatures: ['PROFITIQ', 'LOCATIONIQ'],
       description: 'Implies strategic steering—tying ProjectiQ and ScheduleIQ to daily execution.',
       icon: <TargetIcon />
     },
@@ -111,7 +115,8 @@ export default function PaymentPage() {
       title: 'Helm Seat',
       subtitle: 'Executive Level',
       price: 199,
-      features: ['AUDITIQ', 'CONNECTIQ', 'MARGINIQ', 'SCHEDULEIQ', 'PROJECTIQ', 'INSIGHTIQ', 'PROFITIQ', 'LOCATIONIQ'],
+      includedFeatures: ['AUDITIQ', 'CONNECTIQ', 'MARGINIQ', 'SCHEDULEIQ', 'PROJECTIQ', 'INSIGHTIQ', 'PROFITIQ', 'LOCATIONIQ'],
+      excludedFeatures: [],
       description: 'Conveys top-deck control and full 360° Insight into Profit-, Margin-& InsightiQ modules.',
       icon: <AnchorIcon />
     }
@@ -141,7 +146,7 @@ export default function PaymentPage() {
 
   const handleSubmit = (): void => {
     setIsProcessing(true);
-    
+
     // Simulate payment processing
     setTimeout(() => {
       setIsProcessing(false);
@@ -154,7 +159,7 @@ export default function PaymentPage() {
       <Typography variant="h5" fontWeight="bold" mb={2}>
         Choose your plan
       </Typography>
-      
+
       <Grid container spacing={3}>
         {Object.entries(plans).map(([key, plan]) => (
           <Grid item xs={12} md={4} key={key}>
@@ -172,13 +177,13 @@ export default function PaymentPage() {
                   <Typography variant="caption">Selected</Typography>
                 </SelectedBadge>
               )}
-              
+
               <CardHeader
                 avatar={React.cloneElement(plan.icon as React.ReactElement, { color: 'action' })}
                 title={plan.title}
                 subheader={plan.subtitle}
               />
-              
+
               <CardContent>
                 <Typography variant="h5" component="div" mb={1}>
                   ${plan.price}
@@ -186,22 +191,33 @@ export default function PaymentPage() {
                     /month
                   </Typography>
                 </Typography>
-                
+
                 <Typography variant="body2" color="text.secondary" mb={2} sx={{ minHeight: 60 }}>
                   {plan.description}
                 </Typography>
-                
+
                 <Divider sx={{ my: 2 }} />
-                
+
                 <Box mt={2}>
-                  {plan.features.map((feature: string, index: number) => (
-                    <FeatureItem key={index}>
+                  {/* Included features */}
+                  {plan.includedFeatures.map((feature: string, index: number) => (
+                    <FeatureItem key={`included-${index}`}>
                       <CheckIcon color="success" fontSize="small" sx={{ mr: 1 }} />
                       <Typography variant="body2">{feature}</Typography>
                     </FeatureItem>
                   ))}
+
+                  {/* Excluded features */}
+                  {plan.excludedFeatures.map((feature: string, index: number) => (
+                    <FeatureItem key={`excluded-${index}`}>
+                      <CloseIcon color="error" fontSize="small" sx={{ mr: 1 }} />
+                      <Typography variant="body2" color="text.secondary">
+                        {feature}
+                      </Typography>
+                    </FeatureItem>
+                  ))}
                 </Box>
-                
+
                 <FormControl component="fieldset" sx={{ mt: 3 }}>
                   <FormControlLabel
                     value={key}
@@ -222,12 +238,13 @@ export default function PaymentPage() {
     </Box>
   );
 
+
   const renderBillingInformation = () => (
     <Box my={4}>
       <Typography variant="h5" fontWeight="bold" mb={2}>
         Billing Information
       </Typography>
-      
+
       <Paper elevation={2} sx={{ p: 3 }}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
@@ -330,23 +347,24 @@ export default function PaymentPage() {
       <Typography variant="h5" fontWeight="bold" mb={2}>
         Payment Method
       </Typography>
-      
+
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <Paper
             elevation={2}
             sx={{
               p: 3,
-              borderColor: paymentMethod === 'creditCard' ? 'primary.main' : 'transparent',
-              borderWidth: paymentMethod === 'creditCard' ? 2 : 0,
-              borderStyle: 'solid'
+              borderColor:
+                paymentMethod === "creditCard" ? "primary.main" : "transparent",
+              borderWidth: paymentMethod === "creditCard" ? 2 : 0,
+              borderStyle: "solid",
             }}
           >
             <Box display="flex" alignItems="center" mb={2}>
               <CreditCardIcon sx={{ mr: 1 }} />
               <Typography variant="h6">Credit Card</Typography>
             </Box>
-            
+
             <FormControl component="fieldset">
               <RadioGroup
                 value={paymentMethod}
@@ -359,8 +377,8 @@ export default function PaymentPage() {
                 />
               </RadioGroup>
             </FormControl>
-            
-            {paymentMethod === 'creditCard' && (
+
+            {paymentMethod === "creditCard" && (
               <Box mt={3}>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
@@ -404,22 +422,23 @@ export default function PaymentPage() {
             )}
           </Paper>
         </Grid>
-        
+
         <Grid item xs={12} md={6}>
           <Paper
             elevation={2}
             sx={{
               p: 3,
-              borderColor: paymentMethod === 'invoice' ? 'primary.main' : 'transparent',
-              borderWidth: paymentMethod === 'invoice' ? 2 : 0,
-              borderStyle: 'solid'
+              borderColor:
+                paymentMethod === "invoice" ? "primary.main" : "transparent",
+              borderWidth: paymentMethod === "invoice" ? 2 : 0,
+              borderStyle: "solid",
             }}
           >
             <Box display="flex" alignItems="center" mb={2}>
               <BuildingIcon sx={{ mr: 1 }} />
               <Typography variant="h6">Invoice</Typography>
             </Box>
-            
+
             <FormControl component="fieldset">
               <RadioGroup
                 value={paymentMethod}
@@ -432,11 +451,12 @@ export default function PaymentPage() {
                 />
               </RadioGroup>
             </FormControl>
-            
-            {paymentMethod === 'invoice' && (
+
+            {paymentMethod === "invoice" && (
               <Box mt={3}>
                 <Typography variant="body2" color="text.secondary" paragraph>
-                  An invoice will be sent to your billing email address. Please make payment within 30 days.
+                  An invoice will be sent to your billing email address. Please
+                  make payment within 30 days.
                 </Typography>
                 <TextField
                   label="Purchase Order Number (if applicable)"
@@ -448,22 +468,23 @@ export default function PaymentPage() {
             )}
           </Paper>
         </Grid>
-        
+
         <Grid item xs={12} md={6}>
           <Paper
             elevation={2}
             sx={{
               p: 3,
-              borderColor: paymentMethod === 'paypal' ? 'primary.main' : 'transparent',
-              borderWidth: paymentMethod === 'paypal' ? 2 : 0,
-              borderStyle: 'solid'
+              borderColor:
+                paymentMethod === "paypal" ? "primary.main" : "transparent",
+              borderWidth: paymentMethod === "paypal" ? 2 : 0,
+              borderStyle: "solid",
             }}
           >
             <Box display="flex" alignItems="center" mb={2}>
               <WalletIcon sx={{ mr: 1 }} />
               <Typography variant="h6">PayPal</Typography>
             </Box>
-            
+
             <FormControl component="fieldset">
               <RadioGroup
                 value={paymentMethod}
@@ -476,8 +497,8 @@ export default function PaymentPage() {
                 />
               </RadioGroup>
             </FormControl>
-            
-            {paymentMethod === 'paypal' && (
+
+            {paymentMethod === "paypal" && (
               <Box mt={3}>
                 <Typography variant="body2" color="text.secondary">
                   You will be redirected to PayPal to complete your payment.
@@ -492,22 +513,29 @@ export default function PaymentPage() {
 
   const renderReviewAndConfirm = () => {
     const plan = plans[selectedPlan];
-    
+
     return (
       <Box my={4}>
         <Typography variant="h5" fontWeight="bold" mb={2}>
           Review & Confirm
         </Typography>
-        
+
         <Paper elevation={2} sx={{ p: 3, mb: 3 }}>
           <Typography variant="h6" fontWeight="bold" mb={2}>
             Order Summary
           </Typography>
-          
-          <Box display="flex" justifyContent="space-between" alignItems="flex-start" mb={2}>
+
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="flex-start"
+            mb={2}
+          >
             <Box>
               <Box display="flex" alignItems="center">
-                {React.cloneElement(plan.icon as React.ReactElement, { sx: { mr: 1 } })}
+                {React.cloneElement(plan.icon as React.ReactElement, {
+                  sx: { mr: 1 },
+                })}
                 <Typography fontWeight="medium">
                   {plan.title} ({plan.subtitle})
                 </Typography>
@@ -516,38 +544,46 @@ export default function PaymentPage() {
                 Monthly subscription
               </Typography>
             </Box>
-            <Typography fontWeight="bold">
-              ${plan.price}
-            </Typography>
+            <Typography fontWeight="bold">${plan.price}</Typography>
           </Box>
-          
+
           <Divider sx={{ my: 2 }} />
-          
+
           <Box display="flex" justifyContent="space-between" mb={1}>
             <Typography fontWeight="medium">Subtotal</Typography>
             <Typography fontWeight="medium">${plan.price}</Typography>
           </Box>
-          
+
           <Box display="flex" justifyContent="space-between" mb={1}>
             <Typography variant="body2">Tax</Typography>
             <Typography variant="body2">$0.00</Typography>
           </Box>
-          
+
           <Divider sx={{ my: 2 }} />
-          
+
           <Box display="flex" justifyContent="space-between" mb={2}>
             <Typography fontWeight="bold">Total</Typography>
-            <Typography fontWeight="bold" color="primary">${plan.price}</Typography>
+            <Typography fontWeight="bold" color="primary">
+              ${plan.price}
+            </Typography>
           </Box>
-          
+
           <Alert severity="info" sx={{ mt: 2 }}>
             You will be charged ${plan.price} monthly. You can cancel anytime.
           </Alert>
         </Paper>
-        
+
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography variant="body2" color="text.secondary">
-            By clicking "Complete Payment", you agree to our <Typography component="span" fontWeight="bold">Terms of Service</Typography> and <Typography component="span" fontWeight="bold">Privacy Policy</Typography>.
+            By clicking "Complete Payment", you agree to our{" "}
+            <Typography component="span" fontWeight="bold">
+              Terms of Service
+            </Typography>{" "}
+            and{" "}
+            <Typography component="span" fontWeight="bold">
+              Privacy Policy
+            </Typography>
+            .
           </Typography>
         </Box>
       </Box>
@@ -556,17 +592,19 @@ export default function PaymentPage() {
 
   const renderSuccess = () => (
     <Box textAlign="center" py={6}>
-      <Box sx={{ 
-        width: 64, 
-        height: 64, 
-        borderRadius: '50%', 
-        backgroundColor: 'success.main', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center',
-        mx: 'auto'
-      }}>
-        <CheckIcon sx={{ color: 'white', fontSize: 36 }} />
+      <Box
+        sx={{
+          width: 64,
+          height: 64,
+          borderRadius: "50%",
+          backgroundColor: "success.main",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          mx: "auto",
+        }}
+      >
+        <CheckIcon sx={{ color: "white", fontSize: 36 }} />
       </Box>
       <Typography variant="h4" fontWeight="bold" mt={3} mb={2}>
         Payment Successful!
@@ -580,10 +618,10 @@ export default function PaymentPage() {
       <Typography variant="body2" mb={4}>
         A confirmation email has been sent to your email address.
       </Typography>
-      <Button 
+      <Button
         variant="contained"
         size="large"
-        onClick={() => window.location.href = '/dashboard'}
+        onClick={() => (window.location.href = "/dashboard")}
       >
         Go to Dashboard
       </Button>
@@ -612,7 +650,9 @@ export default function PaymentPage() {
   return (
     <Box maxWidth="lg" mx="auto" px={2}>
       <Box mb={6} textAlign="center">
-        <Typography variant="h3" fontWeight="bold" mb={1}>Complete Your Purchase</Typography>
+        <Typography variant="h3" fontWeight="bold" mb={1}>
+          Complete Your Purchase
+        </Typography>
         <Typography color="text.secondary">
           You're just a few steps away from accessing our platform
         </Typography>
@@ -645,13 +685,17 @@ export default function PaymentPage() {
           <Button
             onClick={handleNext}
             disabled={isProcessing}
-            endIcon={activeStep !== steps.length - 1 ? <ChevronRightIcon /> : undefined}
+            endIcon={
+              activeStep !== steps.length - 1 ? <ChevronRightIcon /> : undefined
+            }
             variant="contained"
           >
             {isProcessing ? (
               <CircularProgress size={24} color="inherit" />
+            ) : activeStep === steps.length - 1 ? (
+              "Complete Payment"
             ) : (
-              activeStep === steps.length - 1 ? 'Complete Payment' : 'Continue'
+              "Continue"
             )}
           </Button>
         </Box>
