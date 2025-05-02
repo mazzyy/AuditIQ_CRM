@@ -90,8 +90,8 @@ const NAVIGATION: Navigation = [
   //   ],
   // },
   {
-    segment: "Gallary",
-    title: "Gallary",
+    segment: "Gallery",
+    title: "Gallery",
     icon: <ScheduleIcon />,
   },
 
